@@ -1,0 +1,3216 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Ryokan - &#127982;clips-and-content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+            font-weight: 600;
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+            font-weight: 700;
+        }
+
+        body {
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        .markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .preserve-whitespace {
+            white-space: pre-wrap;
+        }
+
+        .spoiler-text {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .spoiler-text--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .spoiler-text--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .spoiler-text--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .quote {
+            display: flex;
+            margin: 0.05em 0;
+        }
+
+        .quote::before {
+            content: "";
+            margin-right: 0.5em;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .pre--multiline {
+            margin-top: 0.25em;
+            padding: 0.5em;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .pre--multiline.hljs {
+            background-color: #2f3136;
+            color: #b9bbbe;
+        }
+
+        .pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            color: #7289da;
+            background-color: rgba(114, 137, 218, .1);
+            font-weight: 500;
+        }
+
+        .timestamp {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .emoji {
+            width: 1.325em;
+            height: 1.325em;
+            margin: 0 0.06em;
+            vertical-align: -0.4em;
+        }
+
+        .emoji--small {
+            width: 1em;
+            height: 1em;
+        }
+
+        .emoji--large {
+            width: 2.8em;
+            height: 2.8em;
+        }
+
+        .preamble {
+            display: grid;
+            margin: 0 0.3em 0.6em 0.3em;
+            max-width: 100%;
+            grid-template-columns: auto 1fr;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 0.6em;
+        }
+
+        .preamble__entry {
+            font-size: 1.4em;
+            color: #ffffff;
+        }
+
+        .preamble__entry--small {
+            font-size: 1em;
+        }
+
+        .chatlog {
+            max-width: 100%;
+        }
+
+        .chatlog__message-group {
+            display: grid;
+            margin: 0 0.6em;
+            padding: 0.9em 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: auto 1fr;
+        }
+
+        .chatlog__reference-symbol {
+            grid-column: 1;
+            margin: 8px 4px 4px 18px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__reference {
+            display: flex;
+            grid-column: 2;
+            margin-bottom: 0.25em;
+            font-size: 0.875em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            align-items: center;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-avatar {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25em;
+        }
+
+        .chatlog__reference-name {
+            margin-right: 0.3em;
+            font-weight: 600;
+        }
+
+        .chatlog__reference-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reference-content a:hover {
+            text-decoration: none;
+        }
+
+        .chatlog__reference-link {
+            cursor: pointer;
+            color: #b5b6b8;
+        }
+
+        .chatlog__reference-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reference-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-link:hover *:not(.spoiler-text) {
+            color: #ffffff;
+        }
+
+        .chatlog__reference-edited-timestamp {
+            margin-left: 0.25em;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__author-avatar-container {
+            grid-column: 1;
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+        }
+
+        .chatlog__author-avatar {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chatlog__messages {
+            grid-column: 2;
+            min-width: 50%;
+        }
+
+        .chatlog__author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3em;
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__message {
+            padding: 0.1em 0.3em;
+            margin: 0 -0.3em;
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__content {
+            font-size: 0.95em;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15em;
+            font-size: 0.8em;
+        }
+
+        .chatlog__attachment {
+            display: inline-block;
+            position: relative;
+            margin-top: 0.3em;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            z-index: 999;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.4em 0.8em;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            color: #dcddde;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            width: 100%;
+            max-width: 520px;
+            height: 40px;
+            padding: 10px;
+            background-color: #2f3136;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__edited-timestamp {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3em;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25em;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em 0.6em;
+            background-color: rgba(46, 48, 54, 0.3);
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author {
+            display: flex;
+            margin-bottom: 0.3em;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            margin-right: 0.5em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author-name {
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff
+        }
+
+        .chatlog__embed-author-name-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.2em;
+            font-size: 0.875em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-description {
+            font-weight: 500;
+            font-size: 0.85em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5em;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6em;
+            font-size: 0.875em;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 150px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .chatlog__embed-field-value {
+            font-weight: 500;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            margin-left: 1.2em;
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-image-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-image {
+            max-width: 500px;
+            max-height: 400px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6em;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            margin-right: 0.2em;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-plainimage {
+            vertical-align: top;
+            max-width: 45vw;
+            max-height: 500px;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-spotify {
+            border: 0;
+        }
+
+        .chatlog__embed-youtube-container {
+            margin-top: 0.6em;
+        }
+
+        .chatlog__embed-youtube {
+            border: 0;
+            border-radius: 3px;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            align-items: center;
+            margin: 0.35em 0.1em 0.1em 0.1em;
+            padding: 0.2em 0.35em;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35em;
+            font-size: 0.875em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .chatlog__bot-tag {
+            position: relative;
+            top: -.1em;
+            margin-left: 0.3em;
+            padding: 0.05em 0.3em;
+            border-radius: 3px;
+            line-height: 1.3;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625em;
+            font-weight: 500;
+        }
+
+        .postamble {
+            margin: 1.4em 0.3em 0.6em 0.3em;
+            padding: 1em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler-text--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler-text--hidden');
+            }
+            if (element && element.classList.contains('chatlog__attachment--hidden')) {
+                event.preventDefault();
+                element.classList.remove('chatlog__attachment--hidden');
+            }
+        }
+    </script>
+
+    <svg style="display: none">
+        <symbol id="icon-attachment" viewBox="0 0 720 960">
+            <path fill="#f4f5fb" d="M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z" />
+            <path fill="#7789c4" d="M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z" />
+            <path fill="#f4f5fb" d="M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z" />
+            <path fill="#7789c4" d="M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z" />
+        </symbol>
+    </svg>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/6d8c9e52f949bf45b279e9570d47b2f4-79D26.png" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">The Ryokan</div>
+        <div class="preamble__entry">══ &#120330;&#120368;&#120366;&#120366;&#120374;&#120367;&#120362;&#120373;&#120378; - 温泉 ══ / &#127982;clips-and-content</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">18-Mar-21 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="822288455588642876" id="message-822288455588642876" title="Message sent: 18-Mar-21 10:00 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <video class="chatlog__attachment-media" controls>
+                                <source src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/video0-8791A.mp4" alt="Video attachment" title="Video: video0.mp4 (3.13 MB)">
+                            </video>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="ShibaHeart">
+                                <img class="emoji emoji--small" alt="ShibaHeart" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/818340879701508107-4BB28.png" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">19-Mar-21 03:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="822370472137981953" id="message-822370472137981953" title="Message sent: 19-Mar-21 03:26 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I need more of these in my life
+<a href="https://www.youtube.com/watch?v=xngkvv8OcxU&t=63s">https://www.youtube.com/watch?v=xngkvv8OcxU&amp;t=63s</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC0Uj27_Dv16NQgxZu0AUxKA">Koya.studiiess</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=xngkvv8OcxU&amp;start=63s">
+                                                        <div class="markdown preserve-whitespace">Aesthethic Anime Foods Tiktok Compilation (ASMR)</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/xngkvv8OcxU" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="STURS">
+                                <img class="emoji emoji--small" alt="STURS" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/784110410663854110-2D6E1.png" loading="lazy">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction" title="shibasass112x112">
+                                <img class="emoji emoji--small" alt="shibasass112x112" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/822310329576718437-A83FE.png" loading="lazy">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/426757b2572d354c60901bd7a97ffef7-384BB.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kanemi#3019" data-user-id="326400616471461889" style="color: rgb(226,128,176)">Kanemi</span>
+
+
+        <span class="chatlog__timestamp">19-Mar-21 11:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="822671921065754634" id="message-822671921065754634" title="Message sent: 19-Mar-21 11:24 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/watch?v=FVr1NdZ0Pl0">https://www.youtube.com/watch?v=FVr1NdZ0Pl0</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCchBatdUMZoMfJ3rIzgV84g">Viva La Dirt League</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=FVr1NdZ0Pl0">
+                                                        <div class="markdown preserve-whitespace">What streaming on Twitch actually looks like - Streamer</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/FVr1NdZ0Pl0" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/803dad794040a68f1b79a6a54b837835-FFE79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gingeninje#7720" data-user-id="255410519719149569" style="color: rgb(228,26,26)">Gingeninje</span>
+
+
+        <span class="chatlog__timestamp">19-Mar-21 11:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="822680445148856370" id="message-822680445148856370" title="Message sent: 19-Mar-21 11:58 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.twitch.tv/videos/954066111?t=01h26m52s">https://www.twitch.tv/videos/954066111?t=01h26m52s</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.twitch.tv/videos/954066111?t=01h26m52s">
+                                                        <div class="markdown preserve-whitespace">The Weekly w/ Okaydrian &amp; Krystalogy | Ft.  mischacrossing, snowlit...</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">twitchgaming went live on Twitch. Catch up on their Talk Shows &amp; Podcasts VOD now.</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/thumb0-640x360-B6686.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/thumb0-640x360-B6686.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="822680670316265502" id="message-822680670316265502" title="Message sent: 19-Mar-21 11:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">it should start @1 hour 26 mins in, if you like hunt check out t he clip.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">19-Mar-21 11:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="822680818261426227" id="message-822680818261426227" title="Message sent: 19-Mar-21 11:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">HENRYYYYY</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="822680823018291200" id="message-822680823018291200" title="Message sent: 19-Mar-21 11:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">YOOOO</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/803dad794040a68f1b79a6a54b837835-FFE79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gingeninje#7720" data-user-id="255410519719149569" style="color: rgb(228,26,26)">Gingeninje</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:00 AM</span>
+
+            <div class="chatlog__message " data-message-id="822680867225862205" id="message-822680867225862205" title="Message sent: 20-Mar-21 12:00 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I CAN GIVE YOU MONEY NOW!!!!!!!!!!!!!!!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="822680887854497814" id="message-822680887854497814" title="Message sent: 20-Mar-21 12:00 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i think?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9345ddd6b5ee4508b6628166101cfbfa-EE1EC.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Old Man Karas#3339" data-user-id="221010682630504448" style="color: rgb(26,208,225)">Old Man Karas</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:02 AM</span>
+
+            <div class="chatlog__message " data-message-id="822681528903401502" id="message-822681528903401502" title="Message sent: 20-Mar-21 12:02 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I can&#39;t wait for the Hunt event.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/803dad794040a68f1b79a6a54b837835-FFE79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gingeninje#7720" data-user-id="255410519719149569" style="color: rgb(228,26,26)">Gingeninje</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="822681808382459906" id="message-822681808382459906" title="Message sent: 20-Mar-21 12:03 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">heyyyy lets go <span class="mention" title="Old Man Karas#3339">@Old Man Karas</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="822681873112891423" id="message-822681873112891423" title="Message sent: 20-Mar-21 12:04 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">hmu if you need ppl to play with</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9345ddd6b5ee4508b6628166101cfbfa-EE1EC.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Old Man Karas#3339" data-user-id="221010682630504448" style="color: rgb(26,208,225)">Old Man Karas</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="822681979052490762" id="message-822681979052490762" title="Message sent: 20-Mar-21 12:04 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I play primarily on Xbox, but should I boot up Geforce I&#39;ll let you know. <img loading="lazy" class="emoji " alt="🙂" title="slight_smile" src="https://twemoji.maxcdn.com/2/svg/1f642.svg"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/803dad794040a68f1b79a6a54b837835-FFE79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gingeninje#7720" data-user-id="255410519719149569" style="color: rgb(228,26,26)">Gingeninje</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="822682189489504316" id="message-822682189489504316" title="Message sent: 20-Mar-21 12:05 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">AY! aight</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="822682227565527060" id="message-822682227565527060" title="Message sent: 20-Mar-21 12:05 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Its cool that you play period</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9345ddd6b5ee4508b6628166101cfbfa-EE1EC.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Old Man Karas#3339" data-user-id="221010682630504448" style="color: rgb(26,208,225)">Old Man Karas</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 12:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="822682413356023838" id="message-822682413356023838" title="Message sent: 20-Mar-21 12:06 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Been playing on and off since it came to Game Preview on Xbox. That&#39;s how I met Yuta, from the Hunt discord. <img loading="lazy" class="emoji " alt="🙂" title="slight_smile" src="https://twemoji.maxcdn.com/2/svg/1f642.svg"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="YutaHeart">
+                                <img class="emoji emoji--small" alt="YutaHeart" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/822674481683628093-D4463.png" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9a6685fbaa7b39511ec5d54b6b788d27-1AC93.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jesse-Kom#9862" data-user-id="109880324120432640" style="">Jesse-Kom</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 02:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="822722263010508800" id="message-822722263010508800" title="Message sent: 20-Mar-21 02:44 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">when the event starts if ya&#39;ll need a player hit me up</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="ShibaYayy">
+                                <img class="emoji emoji--small" alt="ShibaYayy" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/818253481902735410-F4065.png" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/803dad794040a68f1b79a6a54b837835-FFE79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gingeninje#7720" data-user-id="255410519719149569" style="color: rgb(228,26,26)">Gingeninje</span>
+
+
+        <span class="chatlog__timestamp">20-Mar-21 03:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="822913267470565387" id="message-822913267470565387" title="Message sent: 20-Mar-21 03:23 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(English follows!!!)
+iOSアプリを作ってみました！(この投稿をみた友達から「会社やめたの？」と聞かれましたがやめてません笑　趣味で作りました！)
+11月頃から始めて手探りで作っていたのですが、四苦八苦しつつもなんとかリリースできました<img loading="lazy" class="emoji " alt="😊" title="blush" src="https://twemoji.maxcdn.com/2/svg/1f60a.svg">
+UIデザインは親しいUIデザイナーの方に手伝ってもらったのですが、何もわからない状態から個人で開発をするのはすごく楽しかったです！
+
+具体的にはYouTubeによくあるたくさんの曲がつながった”mix動画”を、Spotifyプレイリストに変換できるアプリ&quot;mixed!&quot;を作りました！
+もしよければapp storeでインストールしてね<img loading="lazy" class="emoji " alt="👇" title="point_down" src="https://twemoji.maxcdn.com/2/svg/1f447.svg">
+<a href="https://apps.apple.com/jp/app/mixed/id1554637603">https://apps.apple.com/jp/app/mixed/id1554637603</a>
+
+mix動画というのは例えばこういう動画のことです。こういう動画のURLを入力すれば、それがSpotifyプレイリストになります！
+<a href="https://youtu.be/DOjrQ9DByhA">https://youtu.be/DOjrQ9DByhA</a>
+
+まだ対応できない動画もありますが、今後のアップデートをあたたかく見守ってほしいです……
+
+また、いま流行りのZennでアプリの解説記事も書いてみています<img loading="lazy" class="emoji " alt="👶" title="baby" src="https://twemoji.maxcdn.com/2/svg/1f476.svg">仕組みや経緯の説明をしているので、興味があったら読んでみてください！
+<a href="https://zenn.dev/canalun/articles/e5f9d1d3dd83c1">https://zenn.dev/canalun/articles/e5f9d1d3dd83c1</a>
+
+Hi friends!
+
+I developed my first iOS app and the language used in it is English!<img loading="lazy" class="emoji " alt="😊" title="blush" src="https://twemoji.maxcdn.com/2/svg/1f60a.svg"><img loading="lazy" class="emoji " alt="😊" title="blush" src="https://twemoji.maxcdn.com/2/svg/1f60a.svg">
+
+Started engineering on Nov. and managed to build and release it!
+Except for UI (my girlfriend, who is a UI designer, helped me design UI a lot!!!), basically I built by myself and that was really exciting experience!!<img loading="lazy" class="emoji " alt="👶" title="baby" src="https://twemoji.maxcdn.com/2/svg/1f476.svg">
+
+Specifically, the app is for converting YouTube mix to Spotify playlist.
+Here, &quot;mix&quot; means &quot;single videoclip in which many songs are mixed&quot;. For example, the below is a &quot;YouTube mix&quot;.
+<a href="https://youtu.be/W9iUh23Xrsg">https://youtu.be/W9iUh23Xrsg</a>
+You can convert this kind of videos to Spotify playlist! The link for app download is here<img loading="lazy" class="emoji " alt="👇" title="point_down" src="https://twemoji.maxcdn.com/2/svg/1f447.svg">
+<a href="https://apps.apple.com/jp/app/mixed/id1554637603">https://apps.apple.com/jp/app/mixed/id1554637603</a>
+
+The app is not responsive for some videos, please look forward to coming updates!
+
+Would be so nice and great if you try it! Also looking forward to your reply!! Thanks a lot!</span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://apps.apple.com/jp/app/mixed/id1554637603">
+                                                        <div class="markdown preserve-whitespace">‎mixed!</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">‎Easy-to-use tool for creating Spotify playlist from YouTube mix</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1200x630wa-C7CED.png">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1200x630wa-C7CED.png" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCGkbhPqWn0mCGrJAc03imWg">Lil Kio</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=DOjrQ9DByhA">
+                                                        <div class="markdown preserve-whitespace">【ネオシティポップとか】Neo City Pop / Japanese Hip Hop etc. Mix + Video【日本語ラップ...</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/DOjrQ9DByhA" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://zenn.dev/canalun/articles/e5f9d1d3dd83c1">
+                                                        <div class="markdown preserve-whitespace">[初リリース]Youtubeの複数曲mix動画をSpotifyプレイリストに変換するアプリ！</div>
+                                                    </a>
+                                            </div>
+
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/new_txlqub-980A9.png">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/new_txlqub-980A9.png" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCp6_KuNhT0kcFk-jXw9Tivg">Magic Music</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=W9iUh23Xrsg">
+                                                        <div class="markdown preserve-whitespace">New Year Music Mix 2021 <img loading="lazy" class="emoji " alt="♫" title="♫" src="https://twemoji.maxcdn.com/2/svg/266b.svg"> Best Music 2020 Party Mix <img loading="lazy" class="emoji " alt="♫" title="♫" src="https://twemoji.maxcdn.com/2/svg/266b.svg"> Remixes of Po...</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/W9iUh23Xrsg" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/4abe758800750d51942ed663d47b66f4-9E5C4.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Karebear#2663" data-user-id="804921893164548137" style="color: rgb(226,128,176)">Karebear</span>
+
+
+        <span class="chatlog__timestamp">21-Mar-21 09:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="823364225899954266" id="message-823364225899954266" title="Message sent: 21-Mar-21 09:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Baby Yoda is going on an adventure to McDonald&#39;s with all of us yayyyyy <img loading="lazy" class="emoji " alt="YutaHeart" title="YutaHeart" src="https://cdn.discordapp.com/emojis/822674481683628093.png">  <a href="https://www.youtube.com/watch?v=MSOmzRAwg-c">https://www.youtube.com/watch?v=MSOmzRAwg-c</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC2EPZ9-SRb6L8co_AGlsqxw">DarthTV</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=MSOmzRAwg-c">
+                                                        <div class="markdown preserve-whitespace">Baby Yoda goes to McDonald&#39;s</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/MSOmzRAwg-c" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/426757b2572d354c60901bd7a97ffef7-384BB.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kanemi#3019" data-user-id="326400616471461889" style="color: rgb(226,128,176)">Kanemi</span>
+
+
+        <span class="chatlog__timestamp">23-Mar-21 03:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="823821656039751722" id="message-823821656039751722" title="Message sent: 23-Mar-21 03:33 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/watch?v=WHq46obaDR8">https://www.youtube.com/watch?v=WHq46obaDR8</a> From the creator of &quot;A Silent Voice&quot;
+we gonna get our feelings hurt again <img loading="lazy" class="emoji " alt="crybaby" title="crybaby" src="https://cdn.discordapp.com/emojis/592781911693459456.gif"></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC6pGDc4bFGD1_36IKv3FnYg">Crunchyroll Collection</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=WHq46obaDR8">
+                                                        <div class="markdown preserve-whitespace">To Your Eternity | OFFICIAL TRAILER 2</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/WHq46obaDR8" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/c2410427603b20cedc606c8dd043ed11-D9F27.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="I&#39;m going to peg you#8573" data-user-id="714949244049555528" style="color: rgb(118,26,26)">PeggyAbi</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-21 03:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="824363357648846960" id="message-824363357648846960" title="Message sent: 24-Mar-21 03:25 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Wait waaaa when is that available</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/426757b2572d354c60901bd7a97ffef7-384BB.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kanemi#3019" data-user-id="326400616471461889" style="color: rgb(226,128,176)">Kanemi</span>
+
+
+        <span class="chatlog__timestamp">24-Mar-21 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="824456788660191272" id="message-824456788660191272" title="Message sent: 24-Mar-21 09:36 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Idk sadlyy</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="824456799817433088" id="message-824456799817433088" title="Message sent: 24-Mar-21 09:36 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img loading="lazy" class="emoji emoji--large" alt="cry" title="cry" src="https://cdn.discordapp.com/emojis/725423247826485370.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/844dfb89a8970a86bf306bd106a26c37-AF0ED.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="LOVE-GALORe#0754" data-user-id="619951242050797568" style="color: rgb(155,31,235)">LOVE-GALORe</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-21 08:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="824798924932907008" id="message-824798924932907008" title="Message sent: 25-Mar-21 08:16 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <a href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/image0-9AFF7.jpg">
+                                <img class="chatlog__attachment-media" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/image0-9AFF7.jpg" alt="Image attachment" title="Image: image0.jpg (1.24 MB)" loading="lazy">
+                            </a>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="HART">
+                                <img class="emoji emoji--small" alt="HART" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/784110563734192209-18376.png" loading="lazy">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="824798981598216252" id="message-824798981598216252" title="Message sent: 25-Mar-21 08:16 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img loading="lazy" class="emoji emoji--large" alt="ShibaHeart" title="ShibaHeart" src="https://cdn.discordapp.com/emojis/818340879701508107.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/07a3fe1be86dd9ca75e151e995c44e2d-FFD6C.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Gabs#8452" data-user-id="290628294771212299" style="color: rgb(26,208,225)">Gabs</span>
+
+
+        <span class="chatlog__timestamp">25-Mar-21 10:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="824829381121671230" id="message-824829381121671230" title="Message sent: 25-Mar-21 10:17 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://open.spotify.com/episode/4Do90FwsJ29sLnJCXQSAra?si=PlFrEvAJTy63tuBNMDBLFQ">https://open.spotify.com/episode/4Do90FwsJ29sLnJCXQSAra?si=PlFrEvAJTy63tuBNMDBLFQ</a> Jae&#39;s podcast! (about kitchens)</span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://open.spotify.com/episode/4Do90FwsJ29sLnJCXQSAra?si=PlFrEvAJTy63tuBNMDBLFQ">
+                                                        <div class="markdown preserve-whitespace">Ep. #58 | Are Kitchens THAT Important?</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Listen to this episode from How Did I Get Here? w/ Jae and AleXa on Spotify. Kitchens. They&#39;re a place of nourishment, gathering, and most importantly: where the ice cream usually sits. But just how important is this idea of a kitchen? Maybe this episode will convince AleXa to cook more. Meanwhile, Jae&#39;s still perfecting his romantic lasagna.  T...</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/619a6a086bf9bcfb2c5eb1be5d2b93b22df8a585-5DCEF">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/619a6a086bf9bcfb2c5eb1be5d2b93b22df8a585-5DCEF" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/93db70e199864c28acd1e2746b9e5b63-E0E7E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cina#0001" data-user-id="148836229067046914" style="color: rgb(104,98,98)">Cina</span>
+
+
+        <span class="chatlog__timestamp">30-Mar-21 11:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="826667039392268338" id="message-826667039392268338" title="Message sent: 30-Mar-21 11:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://clips.twitch.tv/PerfectOilyHumanDoggo-uNugkF2iIG0lLPfY">https://clips.twitch.tv/PerfectOilyHumanDoggo-uNugkF2iIG0lLPfY</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://clips.twitch.tv/PerfectOilyHumanDoggo-uNugkF2iIG0lLPfY">
+                                                        <div class="markdown preserve-whitespace">yuta_giru - Barbie Girl</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Watch yuta_giru&#39;s clip titled &quot;Barbie Girl&quot;</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/AT-cm%257C1114297693-social-preview-C9742.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/AT-cm%257C1114297693-social-preview-C9742.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="aShakeEyes">
+                                <img class="emoji emoji--small" alt="aShakeEyes" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/586140562818859068-65C62.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction" title="YesCat">
+                                <img class="emoji emoji--small" alt="YesCat" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/706380001225867306-DF927.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction" title="aRooAww">
+                                <img class="emoji emoji--small" alt="aRooAww" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/586138825776955413-E782A.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction" title="kurbz">
+                                <img class="emoji emoji--small" alt="kurbz" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/784112647007109160-4EEF3.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction" title="DogDance">
+                                <img class="emoji emoji--small" alt="DogDance" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/800210542300102658-2202C.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">6</span>
+                            </div>
+                            <div class="chatlog__reaction" title="joshseHehe">
+                                <img class="emoji emoji--small" alt="joshseHehe" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/787665865364733982-94396.png" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/426757b2572d354c60901bd7a97ffef7-384BB.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Kanemi#3019" data-user-id="326400616471461889" style="color: rgb(226,128,176)">Kanemi</span>
+
+
+        <span class="chatlog__timestamp">01-Apr-21 05:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="827289951921635349" id="message-827289951921635349" title="Message sent: 01-Apr-21 05:14 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://store.steampowered.com/app/381210/Dead_by_Daylight/">https://store.steampowered.com/app/381210/Dead_by_Daylight/</a> dead by daylight anime trailer version of the new killer</span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://store.steampowered.com/app/381210/Dead_by_Daylight/">
+                                                        <div class="markdown preserve-whitespace">Dead by Daylight</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Death Is Not an Escape.Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught, tortured and killed. Survivors play in third-person and have the advantage of better situational awareness. The Kill...</div>
+                                            </div>
+
+                                            <div class="chatlog__embed-fields">
+                                                    <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                            <div class="chatlog__embed-field-name">
+                                                                <div class="markdown preserve-whitespace">Price</div>
+                                                            </div>
+
+                                                            <div class="chatlog__embed-field-value">
+                                                                <div class="markdown preserve-whitespace">$9.99</div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="chatlog__embed-field chatlog__embed-field--inline">
+                                                            <div class="chatlog__embed-field-name">
+                                                                <div class="markdown preserve-whitespace">Recommendations</div>
+                                                            </div>
+
+                                                            <div class="chatlog__embed-field-value">
+                                                                <div class="markdown preserve-whitespace">322163</div>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/header-8AC42.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/header-8AC42.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="827289967692349480" id="message-827289967692349480" title="Message sent: 01-Apr-21 05:14 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">its so gooood</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/da4bd2b490441ff5f0b9d2183f8205fc-034F6.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="WolfeSilver92#9651" data-user-id="788774907676065812" style="color: rgb(228,26,26)">WolfeSilver92</span>
+
+
+        <span class="chatlog__timestamp">01-Apr-21 08:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="827346425574588447" id="message-827346425574588447" title="Message sent: 01-Apr-21 08:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://dramacool.vc/drama-detail/sherlock">https://dramacool.vc/drama-detail/sherlock</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://dramacool.vc/drama-detail/sherlock">
+                                                        <div class="markdown preserve-whitespace">Watch full episode of Sherlock | Japanese Drama | Dramacool</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Watch full episode of Sherlock Japanese drama | Dramacool</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/sherlock-2787E.png">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/sherlock-2787E.png" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="bubble_tea">
+                                <img class="emoji emoji--small" alt="&#129483;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f9cb-15CAB.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/93db70e199864c28acd1e2746b9e5b63-E0E7E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cina#0001" data-user-id="148836229067046914" style="color: rgb(104,98,98)">Cina</span>
+
+
+        <span class="chatlog__timestamp">01-Apr-21 11:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="827379044399972422" id="message-827379044399972422" title="Message sent: 01-Apr-21 11:08 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://clips.twitch.tv/AmericanSmellyAubergineCeilingCat-eOuKGHp0sCrsq--M">https://clips.twitch.tv/AmericanSmellyAubergineCeilingCat-eOuKGHp0sCrsq--M</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://clips.twitch.tv/AmericanSmellyAubergineCeilingCat-eOuKGHp0sCrsq--M">
+                                                        <div class="markdown preserve-whitespace">Twitch</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Twitch is the world&#39;s leading video platform and community for gamers.</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/twitch_logo3-F6AF5.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/twitch_logo3-F6AF5.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol"></div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/93db70e199864c28acd1e2746b9e5b63-E0E7E.png" alt="Avatar" loading="lazy">
+                <span class="chatlog__reference-name" title="Cina#0001" style="color: rgb(104,98,98)">Cina</span>
+                <div class="chatlog__reference-content">
+                    <span class="chatlog__reference-link" onclick="scrollToMessage(event, &#39;827379044399972422&#39;)">
+<a href="https://clips.twitch.tv/AmericanSmellyAubergineCeilingCat-eOuKGHp0sCrsq--M">https://clips.twitch.tv/AmericanSmellyAubergineCeilingCat-eOuKGHp0sCrsq--M</a>                    </span>
+
+                </div>
+        </div>
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/4abe758800750d51942ed663d47b66f4-9E5C4.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Karebear#2663" data-user-id="804921893164548137" style="color: rgb(226,128,176)">Karebear</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 12:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="827392965705203753" id="message-827392965705203753" title="Message sent: 02-Apr-21 12:04 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">you mean rip Jake lol</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/93db70e199864c28acd1e2746b9e5b63-E0E7E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cina#0001" data-user-id="148836229067046914" style="color: rgb(104,98,98)">Cina</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 12:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="827393120932331551" id="message-827393120932331551" title="Message sent: 02-Apr-21 12:04 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">maybeee</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 12:13 AM</span>
+
+            <div class="chatlog__message " data-message-id="827395316474708028" id="message-827395316474708028" title="Message sent: 02-Apr-21 12:13 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img loading="lazy" class="emoji emoji--large" alt="ohhhmaRip" title="ohhhmaRip" src="https://cdn.discordapp.com/emojis/780494460232007700.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="yutagiCry">
+                                <img class="emoji emoji--small" alt="yutagiCry" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/824546497302888448-1CAB3.png" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/4072ebf2fd3281ca324054cc2e8f73d8-18010.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="pitaya#6342" data-user-id="231833874651545600" style="color: rgb(226,128,176)">pitaya</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 12:14 AM</span>
+
+            <div class="chatlog__message " data-message-id="827395538336219136" id="message-827395538336219136" title="Message sent: 02-Apr-21 12:14 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">you see the exact moment when realization set in</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="laughing">
+                                <img class="emoji emoji--small" alt="&#128518;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f606-6F8AE.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/93db70e199864c28acd1e2746b9e5b63-E0E7E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cina#0001" data-user-id="148836229067046914" style="color: rgb(104,98,98)">Cina</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 12:16 AM</span>
+
+            <div class="chatlog__message " data-message-id="827396108543983627" id="message-827396108543983627" title="Message sent: 02-Apr-21 12:16 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">jake needed more clips anyway</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/4abe758800750d51942ed663d47b66f4-9E5C4.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Karebear#2663" data-user-id="804921893164548137" style="color: rgb(226,128,176)">Karebear</span>
+
+
+        <span class="chatlog__timestamp">02-Apr-21 03:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="827622276194238555" id="message-827622276194238555" title="Message sent: 02-Apr-21 03:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That’s why he has you lol</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9e00d0dba81cee9e7f01c08fc849b540-86262.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wangxie#4404" data-user-id="474359942451822602" style="color: rgb(155,89,182)">w</span>
+
+
+        <span class="chatlog__timestamp">08-Apr-21 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="829904408539955211" id="message-829904408539955211" title="Message sent: 08-Apr-21 10:23 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/watch?v=EVHRkMLFO9A">https://www.youtube.com/watch?v=EVHRkMLFO9A</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCYa-gJEuIWnIsU16xjUhu_Q">BissbeeTV</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=EVHRkMLFO9A">
+                                                        <div class="markdown preserve-whitespace">Long Long Man</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/EVHRkMLFO9A" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1d72c11b9c5e054a0db2ab1b49f02a4e-6110E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Inc☘n#1499" data-user-id="783354322649481256" style="">Inc☘n</span>
+
+
+        <span class="chatlog__timestamp">08-Apr-21 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="829906255727820851" id="message-829906255727820851" title="Message sent: 08-Apr-21 10:31 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Idk whr to share this... But I&#39;ll just put it here. If it&#39;s not okay to post it here... Imma del it <img loading="lazy" class="emoji " alt="🙏" title="pray" src="https://twemoji.maxcdn.com/2/svg/1f64f.svg"><img loading="lazy" class="emoji " alt="🏻" title="🏻" src="https://twemoji.maxcdn.com/2/svg/1f3fb.svg"><img loading="lazy" class="emoji " alt="🙂" title="slight_smile" src="https://twemoji.maxcdn.com/2/svg/1f642.svg"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <video class="chatlog__attachment-media" controls>
+                                <source src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/lv_0_20210409102041-2B6E7.mp4" alt="Video attachment" title="Video: lv_0_20210409102041.mp4 (21.43 MB)">
+                            </video>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="pleading_face">
+                                <img class="emoji emoji--small" alt="&#129402;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f97a-78C69.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction" title="sparkles">
+                                <img class="emoji emoji--small" alt="✨" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/2728-4239B.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                            <div class="chatlog__reaction" title="two_hearts">
+                                <img class="emoji emoji--small" alt="&#128149;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f495-84498.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9e00d0dba81cee9e7f01c08fc849b540-86262.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wangxie#4404" data-user-id="474359942451822602" style="color: rgb(155,89,182)">w</span>
+
+
+        <span class="chatlog__timestamp">08-Apr-21 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="829906331191214111" id="message-829906331191214111" title="Message sent: 08-Apr-21 10:31 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://www.youtube.com/watch?v=K-TYsAHbb18">https://www.youtube.com/watch?v=K-TYsAHbb18</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCZNN-i45i8G71qAxApykeXw">Small Ditch Studio</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=K-TYsAHbb18">
+                                                        <div class="markdown preserve-whitespace">Sticking Together, No Matter What Tsuruya Japan Ad</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/K-TYsAHbb18" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1d72c11b9c5e054a0db2ab1b49f02a4e-6110E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Inc☘n#1499" data-user-id="783354322649481256" style="">Inc☘n</span>
+
+
+        <span class="chatlog__timestamp">13-Apr-21 07:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="831492163610607637" id="message-831492163610607637" title="Message sent: 13-Apr-21 07:33 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Okieee... Idk! I think I just want everyone to have a good time <img loading="lazy" class="emoji " alt="🙂" title="slight_smile" src="https://twemoji.maxcdn.com/2/svg/1f642.svg"> (tho my friend thought of me as scary after I sent this) <img loading="lazy" class="emoji " alt="😂" title="joy" src="https://twemoji.maxcdn.com/2/svg/1f602.svg"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <video class="chatlog__attachment-media" controls>
+                                <source src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ssstiktok_1618313222-8E4B7.mp4" alt="Video attachment" title="Video: ssstiktok_1618313222.mp4 (1.39 MB)">
+                            </video>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="rofl">
+                                <img class="emoji emoji--small" alt="&#129315;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f923-1D049.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="joy">
+                                <img class="emoji emoji--small" alt="&#128514;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f602-20224.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="raised_hands">
+                                <img class="emoji emoji--small" alt="&#128588;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f64c-FD76A.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="yutagiHeart">
+                                <img class="emoji emoji--small" alt="yutagiHeart" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/824546495679299595-DE39B.png" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/01df74a8275e96779f85e55a563db415-A351C.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="xsarahrachel#0001" data-user-id="722620795536408616" style="">xsarahrachel</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 12:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="832472644632444928" id="message-832472644632444928" title="Message sent: 16-Apr-21 12:29 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/LfrZziG0SAE">https://youtu.be/LfrZziG0SAE</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDjter0oBmaE2_tjn4YfHiA">taejkmin girl</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=LfrZziG0SAE">
+                                                        <div class="markdown preserve-whitespace">GOT7 Aegyo Ottoke Song Weekly Idol (Original by Hyojung OMG)</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/LfrZziG0SAE" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/7db61d5f7ee3cc38e4258c0275b74c65-1AAC3.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otakunurse#6554" data-user-id="795177294909407243" style="">otakunurse</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 12:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="832473398814834740" id="message-832473398814834740" title="Message sent: 16-Apr-21 12:32 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Hisoka would be proud <img loading="lazy" class="emoji " alt="😋" title="yum" src="https://twemoji.maxcdn.com/2/svg/1f60b.svg">
+
+<a href="https://clips.twitch.tv/ColdbloodedTenaciousFriesTF2John-Day-woYJEmQz1BnM">https://clips.twitch.tv/ColdbloodedTenaciousFriesTF2John-Day-woYJEmQz1BnM</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://clips.twitch.tv/ColdbloodedTenaciousFriesTF2John-Day-woYJEmQz1BnM">
+                                                        <div class="markdown preserve-whitespace">yuta_giru - Long strip style</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Watch yuta_giru&#39;s clip titled &quot;Long strip style&quot;</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/42332685902-offset-13558-social-preview-DC0F8.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/42332685902-offset-13558-social-preview-DC0F8.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="aShakeEyes">
+                                <img class="emoji emoji--small" alt="aShakeEyes" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/586140562818859068-65C62.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction" title="sweat_drops">
+                                <img class="emoji emoji--small" alt="&#128166;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f4a6-F8D64.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9e00d0dba81cee9e7f01c08fc849b540-86262.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="wangxie#4404" data-user-id="474359942451822602" style="color: rgb(155,89,182)">w</span>
+
+
+        <span class="chatlog__timestamp">27-Apr-21 02:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="836483391595479060" id="message-836483391595479060" title="Message sent: 27-Apr-21 02:06 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/citnw038UQ0">https://youtu.be/citnw038UQ0</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDYyCQAk60CqabvkL5gU3Mw">KOTSUMET</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=citnw038UQ0">
+                                                        <div class="markdown preserve-whitespace">ずっと我慢してたサーモン登場に嬉しさ大爆発のカワウソ　Otter Excited about Salmon Cheat Day</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/citnw038UQ0" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="pleading_face">
+                                <img class="emoji emoji--small" alt="&#129402;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f97a-78C69.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="otter">
+                                <img class="emoji emoji--small" alt="&#129446;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f9a6-532CA.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="two_hearts">
+                                <img class="emoji emoji--small" alt="&#128149;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f495-84498.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol"></div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/9e00d0dba81cee9e7f01c08fc849b540-86262.png" alt="Avatar" loading="lazy">
+                <span class="chatlog__reference-name" title="wangxie#4404" style="color: rgb(155,89,182)">w</span>
+                <div class="chatlog__reference-content">
+                    <span class="chatlog__reference-link" onclick="scrollToMessage(event, &#39;836483391595479060&#39;)">
+<a href="https://youtu.be/citnw038UQ0">https://youtu.be/citnw038UQ0</a>                    </span>
+
+                </div>
+        </div>
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">28-Apr-21 02:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="836852257856290867" id="message-836852257856290867" title="Message sent: 28-Apr-21 02:32 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">this warms my heart</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1d72c11b9c5e054a0db2ab1b49f02a4e-6110E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Inc☘n#1499" data-user-id="783354322649481256" style="">Inc☘n</span>
+
+
+        <span class="chatlog__timestamp">27-May-21 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="847655288261967872" id="message-847655288261967872" title="Message sent: 27-May-21 09:59 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/rCzR7GkOXNw">https://youtu.be/rCzR7GkOXNw</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCvJ4XcL0YnybHu4Er9LZGGw">Blimey</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=rCzR7GkOXNw">
+                                                        <div class="markdown preserve-whitespace">Sebab orang Korea ingin bermigrasi ke Malaysia｜Malaysia Talk in Kor...</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/rCzR7GkOXNw" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1d72c11b9c5e054a0db2ab1b49f02a4e-6110E.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Inc☘n#1499" data-user-id="783354322649481256" style="">Inc☘n</span>
+
+
+        <span class="chatlog__timestamp">23-Jun-21 01:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="857312699674787870" id="message-857312699674787870" title="Message sent: 23-Jun-21 01:34 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Pov: I don&#39;t have any clips but this is while you were sleeping content for insta reels</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <video class="chatlog__attachment-media" controls>
+                                <source src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/erm-6F5B0.mp4" alt="Video attachment" title="Video: erm.mp4 (1.46 MB)">
+                            </video>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="eyes">
+                                <img class="emoji emoji--small" alt="&#128064;" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/1f440-31786.svg" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/f7140704fd2db1fa87475d71a6743386-DE6DF.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Nobugard#3314" data-user-id="535696087575691274" style="color: rgb(21,119,204)">Nobu</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 11:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="862171758328283196" id="message-862171758328283196" title="Message sent: 06-Jul-21 11:22 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/wJvZGza1ECM">https://youtu.be/wJvZGza1ECM</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UC5mJnRsMIXXR10pUrwF978g">Pebloz</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=wJvZGza1ECM">
+                                                        <div class="markdown preserve-whitespace">give me a beat (one-winged angel)</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/wJvZGza1ECM" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="862172919294984242" id="message-862172919294984242" title="Message sent: 06-Jul-21 11:27 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/GhPi2EIyHj4">https://youtu.be/GhPi2EIyHj4</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCW2zRI2bFiAPW3lVXhH5hQQ">AJayHubs</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=GhPi2EIyHj4">
+                                                        <div class="markdown preserve-whitespace">Can he chug a sparkling water and not burp?</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/GhPi2EIyHj4" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="862174470072827914" id="message-862174470072827914" title="Message sent: 06-Jul-21 11:33 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/yJziBfrrP4M">https://youtu.be/yJziBfrrP4M</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCDK3dTkOT0GRtkY2q2JRJ6g">Galaxy</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=yJziBfrrP4M">
+                                                        <div class="markdown preserve-whitespace">Avengers Infinity War - Titan (Wake Me Up)</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/yJziBfrrP4M" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/f172345e4c648a3f06a7e09700913c73-BFB79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="0ddity#8088" data-user-id="313812971275157505" style="color: rgb(26,208,225)">0ddity</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 11:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="862176088998281307" id="message-862176088998281307" title="Message sent: 06-Jul-21 11:39 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/3E4xAlzt8m8">https://youtu.be/3E4xAlzt8m8</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCUJW2ZNkHOkhD-cWeBFq-gw">Jonkari P</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=3E4xAlzt8m8">
+                                                        <div class="markdown preserve-whitespace">Why did Kermit fall from the roof?</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/3E4xAlzt8m8" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/f7140704fd2db1fa87475d71a6743386-DE6DF.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Nobugard#3314" data-user-id="535696087575691274" style="color: rgb(21,119,204)">Nobu</span>
+
+
+        <span class="chatlog__timestamp">06-Jul-21 11:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="862180746684923935" id="message-862180746684923935" title="Message sent: 06-Jul-21 11:58 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/xYu8EKEbWP4">https://youtu.be/xYu8EKEbWP4</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCEAkQFqo04T0HKgdpP8wfug">Joy Manoppo</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=xYu8EKEbWP4">
+                                                        <div class="markdown preserve-whitespace">Bitches be like i- i- you- wow i-&#160;bayonetta edition</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/xYu8EKEbWP4" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/a57631e1718389301cf1d1bd5e21760c-A5E6D.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="NotReallySerena#0785" data-user-id="672654290958942218" style="color: rgb(241,196,15)">NotReallySerena</span>
+
+
+        <span class="chatlog__timestamp">03-Aug-21 02:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="872005230403936307" id="message-872005230403936307" title="Message sent: 03-Aug-21 02:37 AM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Maybe for next time you decide to watch some scary videos on stream 
+
+<a href="https://www.youtube.com/watch?v=qWXnt2Z2D1E">https://www.youtube.com/watch?v=qWXnt2Z2D1E</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCr1zZcrgK3k-KvH5KnfHtXQ">nana825763</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=qWXnt2Z2D1E">
+                                                        <div class="markdown preserve-whitespace">My house walk-through</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/qWXnt2Z2D1E" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/f172345e4c648a3f06a7e09700913c73-BFB79.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="0ddity#8088" data-user-id="313812971275157505" style="color: rgb(26,208,225)">0ddity</span>
+
+
+        <span class="chatlog__timestamp">06-Aug-21 03:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="873283058382561330" id="message-873283058382561330" title="Message sent: 06-Aug-21 03:15 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Yuta when he has any guests: <a href="https://youtu.be/LdFDAmjfYjo">https://youtu.be/LdFDAmjfYjo</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCI1XS_GkLGDOgf8YLaaXNRA">CalebCity</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=LdFDAmjfYjo">
+                                                        <div class="markdown preserve-whitespace">The friend thats OVERLY hospitable when you&#39;re sleeping at their house</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/LdFDAmjfYjo" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="aShakeEyes">
+                                <img class="emoji emoji--small" alt="aShakeEyes" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/586140562818859068-65C62.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="EYES">
+                                <img class="emoji emoji--small" alt="EYES" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/712090944488341505-B754F.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/e1be3f929b49536d1b6f99f7aef48526-25D68.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MagicChunks (Lyn)#9465" data-user-id="716733055594922035" style="">MagicChunks (Lyn)</span>
+
+
+        <span class="chatlog__timestamp">06-Aug-21 05:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="873316092964126751" id="message-873316092964126751" title="Message sent: 06-Aug-21 05:26 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="0ddity#8088">@0ddity</span> reminds me of this classic <a href="https://youtu.be/GBwELzvnrQg">https://youtu.be/GBwELzvnrQg</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCghR6gNuBneEKkDuKtXQM4w">Chris Fleming</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=GBwELzvnrQg">
+                                                        <div class="markdown preserve-whitespace">COMPANY IS COMING</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/GBwELzvnrQg" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction" title="UmbreonReally">
+                                <img class="emoji emoji--small" alt="UmbreonReally" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/805917746075795456-F544A.png" loading="lazy">
+                                <span class="chatlog__reaction-count">2</span>
+                            </div>
+                            <div class="chatlog__reaction" title="thisisfine">
+                                <img class="emoji emoji--small" alt="thisisfine" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/708297685819588638-8C87D.gif" loading="lazy">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/a57631e1718389301cf1d1bd5e21760c-A5E6D.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="NotReallySerena#0785" data-user-id="672654290958942218" style="color: rgb(241,196,15)">NotReallySerena</span>
+
+
+        <span class="chatlog__timestamp">11-Aug-21 07:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="875164505225707541" id="message-875164505225707541" title="Message sent: 11-Aug-21 07:51 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://youtu.be/Ly8j1GaCTIQ">https://youtu.be/Ly8j1GaCTIQ</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCz_fWaf7v2-QfCMYNJ_bxYw">nWojo</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=Ly8j1GaCTIQ">
+                                                        <div class="markdown preserve-whitespace">Excuse Me. Can I please bite a chunk out yo ass?</div>
+                                                    </a>
+                                            </div>
+
+                                        <div class="chatlog__embed-youtube-container">
+                                            <iframe class="chatlog__embed-youtube" src="https://www.youtube.com/embed/Ly8j1GaCTIQ" width="400" height="225"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/ce2b28d8c72adb050f96847ce4b9127f-8E70F.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Giru#3205" data-user-id="385234006888939531" style="color: rgb(52,152,219)">Yuta</span>
+
+
+        <span class="chatlog__timestamp">20-Sep-21 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="889689865531318332" id="message-889689865531318332" title="Message sent: 20-Sep-21 09:49 PM">
+
+                    <div class="chatlog__attachment " onclick="">
+
+                            <video class="chatlog__attachment-media" controls>
+                                <source src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/VideoCompilation_09-20-2021_21-42-22-262-F23A3.mp4" alt="Video attachment" title="Video: VideoCompilation_09-20-2021_21-42-22-262.mp4 (9.69 MB)">
+                            </video>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="889689918534717530" id="message-889689918534717530" title="Message sent: 20-Sep-21 09:50 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I needed to post this from my friends pov</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+
+<div class="chatlog__message-group">
+
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/dfa0595312ae86b876466c5554d0c82f-9E992.png" alt="Avatar" loading="lazy">
+    </div>
+
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Heiwa-sensei#4457" data-user-id="189449757184360459" style="color: rgb(155,89,182)">Heiwa-sensei</span>
+
+
+        <span class="chatlog__timestamp">21-Oct-21 05:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="900856531296350238" id="message-900856531296350238" title="Message sent: 21-Oct-21 05:22 PM">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://clips.twitch.tv/ResourcefulEnjoyableInternBCWarrior-D5zR7JoF6Rx3MsdW">https://clips.twitch.tv/ResourcefulEnjoyableInternBCWarrior-D5zR7JoF6Rx3MsdW</a></span>
+
+                        </div>
+                    </div>
+
+
+                        <div class="chatlog__embed">
+                                <div class="chatlog__embed-color-pill chatlog__embed-color-pill--default"></div>
+
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://clips.twitch.tv/ResourcefulEnjoyableInternBCWarrior-D5zR7JoF6Rx3MsdW">
+                                                        <div class="markdown preserve-whitespace">yuta_giru - The Obama Effect</div>
+                                                    </a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">
+                                                <div class="markdown preserve-whitespace">Watch yuta_giru&#39;s clip titled &quot;The Obama Effect&quot;</div>
+                                            </div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/AT-cm%25257Ce30yFQ-c0eyaBekcdzLHVg-social-pr-6F3A5.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="The%20Ryokan%20-%20%E2%95%90%E2%95%90%20%F0%9D%98%8A%F0%9D%98%B0%F0%9D%98%AE%F0%9D%98%AE%F0%9D%98%B6%F0%9D%98%AF%F0%9D%98%AA%F0%9D%98%B5%F0%9D%98%BA%20-%20%E6%B8%A9%E6%B3%89%20%E2%95%90%E2%95%90%20-%20%F0%9F%8F%AEclips-and-content%20%5B799893120446890017%5D.html_Files/AT-cm%25257Ce30yFQ-c0eyaBekcdzLHVg-social-pr-6F3A5.jpg" alt="Thumbnail" loading="lazy">
+                                            </a>
+                                        </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 59 message(s)</div>
+</div>
+
+</body>
+
+</html>
